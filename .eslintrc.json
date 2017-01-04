@@ -1,0 +1,27 @@
+{
+  "env": {
+    "commonjs": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "eqeqeq": 1,
+    "indent": [
+      2,
+      2
+    ],
+    "no-console": 0,
+    "no-control-regex": 0,
+    "quotes": [
+      2,
+      "single"
+    ],
+    "semi": [
+      2,
+      "always"
+    ]
+  }
+}

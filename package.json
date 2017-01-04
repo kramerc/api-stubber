@@ -1,0 +1,28 @@
+{
+  "name": "api-stubber",
+  "version": "1.0.0",
+  "description": "Easily stub APIs for testing",
+  "main": "lib/index.js",
+  "repository": "https://github.com/kramerc/api-stubber.git",
+  "author": "Kramer Campbell <kramer@kramerc.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d lib/",
+    "prepublish": "npm run build",
+    "start": "node lib/index.js"
+  },
+  "bin": {
+    "api-stubber": "bin/api-stubber.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.4",
+    "eslint": "^3.12.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "minimist": "^1.2.0",
+    "morgan": "^1.7.0"
+  }
+}

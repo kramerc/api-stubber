@@ -13,23 +13,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('combined'));
 
 app.all(/.*/, (req, res) => {
-  let sentData;
+  let stub = req.body._stub || req.query._stub;
+  let headers = req.body._headers || req.query._headers;
+  let status = parseInt(req.body._status || req.query._status, 10);
 
-  if (req.method === 'GET') {
-    sentData = req.query;
-  } else {
-    sentData = req.body;
+  if (headers) {
+    res.set(headers);
   }
 
-  if (sentData._headers) {
-    res.set(sentData._headers);
+  if (status) {
+    res.status(status);
   }
 
-  if (sentData._status) {
-    res.status(sentData._status);
-  }
-
-  res.send(sentData._stub);
+  res.send(stub);
 });
 
 app.listen(port, () => {

@@ -12,21 +12,33 @@ app.use(bodyParser.json());
 app.use(morgan('combined'));
 
 app.all(/.*/, (req, res) => {
+  let sentData;
+
   if (req.method === 'GET') {
     if (!req.query._stub) {
       res.send({ error: 'No _stub object was provided in the query string' });
       return;
     }
 
-    res.send(req.query._stub);
+    sentData = req.query;
   } else {
     if (!req.body._stub) {
       res.send({ error: 'No _stub object was provided in the body' });
       return;
     }
 
-    res.send(req.body._stub);
+    sentData = req.body;
   }
+
+  if (sentData._headers) {
+    res.set(sentData._headers);
+  }
+
+  if (sentData._status) {
+    res.status(sentData._status);
+  }
+
+  res.send(sentData._stub);
 });
 
 app.listen(port, () => {

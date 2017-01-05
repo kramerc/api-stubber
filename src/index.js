@@ -15,18 +15,8 @@ app.all(/.*/, (req, res) => {
   let sentData;
 
   if (req.method === 'GET') {
-    if (!req.query._stub) {
-      res.send({ error: 'No _stub object was provided in the query string' });
-      return;
-    }
-
     sentData = req.query;
   } else {
-    if (!req.body._stub) {
-      res.send({ error: 'No _stub object was provided in the body' });
-      return;
-    }
-
     sentData = req.body;
   }
 

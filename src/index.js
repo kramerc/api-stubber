@@ -29,7 +29,7 @@ app.all(/.*/, (req, res) => {
 
 export function start(port = 3000) {
   app.listen(port, () => {
-    console.log(`api-stubber listening on port ${port}...`);
+    console.log(`mockful listening on port ${port}...`);
   });
 }
 

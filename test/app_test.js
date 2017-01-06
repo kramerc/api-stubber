@@ -12,7 +12,7 @@ describe('app', () => {
     describe('stub', () => {
       it('responds with the stub', (done) => {
         request(app)
-          .get('/?_stub[name]=test')
+          .get('/?_mock[name]=test')
           .expect(200, {
             name: 'test'
           }, done);
@@ -42,7 +42,7 @@ describe('app', () => {
       it('responds with the stub', (done) => {
         request(app)
           .post('/')
-          .send({ _stub: { name: 'test' } })
+          .send({ _mock: { name: 'test' } })
           .expect(200, {
             name: 'test'
           }, done);
@@ -73,8 +73,8 @@ describe('app', () => {
     describe('stub', () => {
       it('responds with the request body stub', (done) => {
         request(app)
-          .post('/?_stub[name]=test')
-          .send({ _stub: { name: 'somethingelse' } })
+          .post('/?_mock[name]=test')
+          .send({ _mock: { name: 'somethingelse' } })
           .expect(200, {
             name: 'somethingelse'
           }, done);

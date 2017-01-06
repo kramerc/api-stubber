@@ -1,11 +1,11 @@
 {
-  "name": "api-stubber",
+  "name": "mockful",
   "version": "0.0.0-development",
-  "description": "Simple API server for stubbing",
+  "description": "Simple API server for lazy mocking",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kramerc/api-stubber.git"
+    "url": "https://github.com/kramerc/mockful.git"
   },
   "author": "Kramer Campbell <kramer@kramerc.com>",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "bin": {
-    "api-stubber": "bin/api-stubber.js"
+    "mockful": "bin/mockful.js"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

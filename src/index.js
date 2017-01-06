@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.all(/.*/, (req, res) => {
-  let stub = req.body._stub || req.query._stub;
+  let stub = req.body._mock || req.query._mock;
   let headers = req.body._headers || req.query._headers;
   let status = parseInt(req.body._status || req.query._status, 10);
 

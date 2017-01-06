@@ -1,38 +1,38 @@
-# api-stubber
+# mockful
 
-A simple API server for lazy stubbing with no configuration.
+A simple API server for lazy mocking with no configuration.
 
 ## Install
 
 ```
-npm install -g api-stubber
+npm install -g mockful
 ```
 
 ## Running
 
-Simply run `api-stubber` and it will start an HTTP server on port 3000.
+Simply run `mockful` and it will start an HTTP server on port 3000.
 
 To change the port, use `--port PORT`. For example:
 
 ```
-api-stubber --port 3000
+mockful --port 3000
 ```
 
 ## Making requests
 
-api-stubber accepts all HTTP requests. However, if no special parameters are set then the server will simply respond with an empty body with 200 OK.
+mockful accepts all HTTP requests. However, if no special parameters are set then the server will simply respond with an empty body with 200 OK.
 
 ### Special parameters
 
-These special parameters affect how api-stubber will respond to a request.
+These special parameters affect how mockful will respond to a request.
 
-- `_stub` - Specifies what will be echoed back in the response
+- `_mock` - Specifies what will be echoed back in the response
 
   JSON example:
 
   ```json
   {
-    "_stub": {
+    "_mock": {
       "example": true
     }
   }
@@ -41,7 +41,7 @@ These special parameters affect how api-stubber will respond to a request.
   Query string example:
 
   ```
-  _stub[example]=true
+  _mock[example]=true
   ```
 
 - `_headers` - Specifies what headers to set in the response
@@ -80,19 +80,19 @@ These special parameters affect how api-stubber will respond to a request.
 
 ### Setting parameters
 
-These special parameters can be set in the request body or in the query string. If both are set, api-stubber will look for the special parameter in the body first before looking in the query string.
+These special parameters can be set in the request body or in the query string. If both are set, mockful will look for the special parameter in the body first before looking in the query string.
 
-All other parameters defined will be ignored. After all, you're just stubbing your API.
+All other parameters defined will be ignored. After all, you're just mocking your API.
 
 #### Using a request body
 
-api-stubber supports JSON and urlencoded bodies.
+mockful supports JSON and urlencoded bodies.
 
 #### Using a query string
 
 A query string can be passed in the format of:
 ```
-_stub[name]=test
+_mock[name]=test
 ```
 
 The above will result in the responding body returning:
@@ -104,7 +104,7 @@ To simplify building a query string like this, [qs](https://www.npmjs.com/packag
 
 ```js
 let query = qs.stringify({
-  _stub: [
+  _mock: [
     {
       name: 'test',
       test: [1, 2, 3]
@@ -112,8 +112,8 @@ let query = qs.stringify({
   ]
 });
 
-# query = '_stub%5B0%5D%5Bname%5D=test&_stub%5B0%5D%5Btest%5D%5B0%5D=1&_stub%5B0%5D%5Btest%5D%5B1%5D=2&_stub%5B0%5D%5Btest%5D%5B2%5D=3'
-# Unescaped: '_stub[0][name]=test&_stub[0][test][0]=1&_stub[0][test][1]=2&_stub[0][test][2]=3'
+# query = '_mock%5B0%5D%5Bname%5D=test&_mock%5B0%5D%5Btest%5D%5B0%5D=1&_mock%5B0%5D%5Btest%5D%5B1%5D=2&_mock%5B0%5D%5Btest%5D%5B2%5D=3'
+# Unescaped: '_mock[0][name]=test&_mock[0][test][0]=1&_mock[0][test][1]=2&_mock[0][test][2]=3'
 
 let url = `http://localhost:3000/example?${query}`;
 ```

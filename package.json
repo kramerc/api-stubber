@@ -1,6 +1,6 @@
 {
   "name": "api-stubber",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Simple API server for stubbing",
   "main": "lib/index.js",
   "repository": {
@@ -14,7 +14,8 @@
     "prepublish": "npm run build",
     "start": "node lib/index.js",
     "pretest": "npm run build",
-    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register"
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-register",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "bin": {
     "api-stubber": "bin/api-stubber.js"
@@ -26,7 +27,8 @@
     "cross-env": "^3.1.4",
     "eslint": "^3.12.2",
     "mocha": "^3.2.0",
-    "supertest": "^2.0.1"
+    "supertest": "^2.0.1",
+    "semantic-release": "^6.3.2"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

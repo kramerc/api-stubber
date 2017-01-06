@@ -1,9 +1,12 @@
 {
   "name": "api-stubber",
   "version": "1.0.0",
-  "description": "Easily stub APIs for testing",
+  "description": "Simple API server for stubbing",
   "main": "lib/index.js",
-  "repository": "https://github.com/kramerc/api-stubber.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kramerc/api-stubber.git"
+  },
   "author": "Kramer Campbell <kramer@kramerc.com>",
   "license": "MIT",
   "scripts": {

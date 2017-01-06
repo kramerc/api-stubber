@@ -1,12 +1,8 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 import morgan from 'morgan';
-import parseArgs from 'minimist';
-
-const argv = parseArgs(process.argv.slice(2));
 
 const app = express();
-const port = argv.port || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +24,10 @@ app.all(/.*/, (req, res) => {
   res.send(stub);
 });
 
-app.listen(port, () => {
-  console.log(`api-stubber listening on port ${port}...`);
-});
+export function start(port = 3000) {
+  app.listen(port, () => {
+    console.log(`api-stubber listening on port ${port}...`);
+  });
+}
+
+export default app;

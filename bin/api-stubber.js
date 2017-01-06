@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-require('../lib/index');
+
+var argv = require('minimist')(process.argv.slice(2));
+require('../lib').start(argv.port);

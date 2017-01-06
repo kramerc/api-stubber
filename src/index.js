@@ -6,7 +6,10 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan('combined'));
+
+if (process.env.NODE_ENV !== 'test') {
+  app.use(morgan('combined'));
+}
 
 app.all(/.*/, (req, res) => {
   let stub = req.body._stub || req.query._stub;
